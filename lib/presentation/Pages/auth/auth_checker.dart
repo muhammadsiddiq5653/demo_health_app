@@ -1,9 +1,10 @@
-import 'package:authentication_riverpod/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../domain/providers/auth_provider.dart';
 import '../export.dart';
-
+import '../health/health_data_screen.dart';
+import 'login/login_page.dart';
 
 class AuthChecker extends ConsumerWidget {
   const AuthChecker({Key? key}) : super(key: key);

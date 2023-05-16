@@ -1,7 +1,10 @@
-import 'package:authentication_riverpod/providers/auth_provider.dart';
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../domain/export.dart';
 
 class LoginPage extends StatefulWidget {
   static const routename = '/LoginPage';
@@ -15,12 +18,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //  GlobalKey is used to validate the Form
   final GlobalKey<FormState> _formKey = GlobalKey();
-
-  //  TextEditingController to get the data from the TextFields
-  //  we can also use Riverpod to manage the state of the TextFields
-  //  but again I am not using it here
-  final _email = TextEditingController();
-  final _password = TextEditingController();
 
   //  A loading variable to show the loading animation when you a function is ongoing
   bool _isLoading = false;
@@ -117,39 +114,44 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.only(top: 32.0),
-                            margin: const EdgeInsets.symmetric(horizontal: 16),
-                            width: double.infinity,
-                            child: _isLoading
-                                ? const Center(
-                                    child: CircularProgressIndicator())
-                                : MaterialButton(
-                                    onPressed: _onPressedFunction,
-                                    textColor: Colors.blue.shade700,
-                                    textTheme: ButtonTextTheme.primary,
-                                    minWidth: 100,
-                                    padding: const EdgeInsets.all(18),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),
-                                      side: BorderSide(
-                                          color: Colors.blue.shade700),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        FaIcon(FontAwesomeIcons.apple),
-                                        SizedBox(width: 10),
-                                        Text(
-                                          'Login with Apple',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600),
+                          Platform.isIOS
+                              ? Container(
+                                  padding: const EdgeInsets.only(top: 32.0),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 16),
+                                  width: double.infinity,
+                                  child: _isLoading
+                                      ? const Center(
+                                          child: CircularProgressIndicator())
+                                      : MaterialButton(
+                                          onPressed: _onPressedFunction,
+                                          textColor: Colors.blue.shade700,
+                                          textTheme: ButtonTextTheme.primary,
+                                          minWidth: 100,
+                                          padding: const EdgeInsets.all(18),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                            side: BorderSide(
+                                                color: Colors.blue.shade700),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: const [
+                                              FaIcon(FontAwesomeIcons.apple),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                'Login with Apple',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                          ),
+                                )
+                              : SizedBox.shrink(),
                           Container(
                             padding: const EdgeInsets.only(top: 32.0),
                             margin: const EdgeInsets.symmetric(horizontal: 16),
