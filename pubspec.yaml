@@ -1,6 +1,5 @@
 name: authentication_riverpod
-description: This project explains the working of Firebase Authentication using
-  Riverpod as State-Management
+description: Demo Health App
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.

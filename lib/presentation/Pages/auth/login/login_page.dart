@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
           //  respective parameters.
           //  if you want you can write the exact code in the onPressed function
           //  it all depends on personal preference and code readability
-          Future<void> _onPressedFunction() async {
+          Future<void> onPressedFunction() async {
             if (!_formKey.currentState!.validate()) {
               return;
             }
@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             //  Authenticating
           }
 
-          Future<void> _loginWithGoogle() async {
+          Future<void> loginWithGoogle() async {
             loading2();
             await auth
                 .signInWithGoogle(context)
@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                                       ? const Center(
                                           child: CircularProgressIndicator())
                                       : MaterialButton(
-                                          onPressed: _onPressedFunction,
+                                          onPressed: onPressedFunction,
                                           textColor: Colors.blue.shade700,
                                           textTheme: ButtonTextTheme.primary,
                                           minWidth: 100,
@@ -151,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                           ),
                                         ),
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           Container(
                             padding: const EdgeInsets.only(top: 32.0),
                             margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -160,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ? const Center(
                                     child: CircularProgressIndicator())
                                 : MaterialButton(
-                                    onPressed: _loginWithGoogle,
+                                    onPressed: loginWithGoogle,
                                     textColor: Colors.blue.shade700,
                                     textTheme: ButtonTextTheme.primary,
                                     minWidth: 100,

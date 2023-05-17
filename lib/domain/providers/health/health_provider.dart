@@ -5,5 +5,10 @@ final healthRepositoryProvider = Provider((_) => HealthRepo());
 
 final healthProvider = FutureProvider((ref) {
   final entryRepository = ref.watch(healthRepositoryProvider);
-  return entryRepository.fetchData();
+  return entryRepository.fetchStepsData();
+});
+
+final stepProvider = FutureProvider((ref) {
+  final entryRepository = ref.watch(healthRepositoryProvider);
+  return entryRepository.fetchStepsData();
 });

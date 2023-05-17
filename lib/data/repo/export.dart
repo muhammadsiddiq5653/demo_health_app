@@ -1,2 +1,2 @@
-export 'auth_repo.dart';
-export 'health_repo.dart';
+export 'auth/export.dart';
+export 'health/export.dart';
